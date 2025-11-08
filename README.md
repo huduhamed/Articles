@@ -1,59 +1,73 @@
 # Articles
 
-This page was built with **React**, **React-Redux** for the frontend and **Express.js & Node.js** for backend with **Mongodb** as the database.
+Full-stack Articles app (React + Redux on the front end, Node/Express + MongoDB on the back end) that implements authenticated CRUD for posts, search, tags, pagination and Google sign-in.
 
-## Motive
-
-The intention of building this project was part of a process to learn react-redux, that is to pass data and manage state accross different pages within an application. This enable users to interact with the page with all CRUD operations, that create posts, read, update, or delete posts they created.
-
-## Tech Stack
+## Tech stack
 
 ![React.js](https://img.shields.io/badge/React.js-61DAFB?style=for-the-badge&logo=react&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![React-Redux](https://img.shields.io/badge/React--Redux-764ABC?style=for-the-badge&logo=redux&logoColor=white)
-![JWT](https://img.shields.io/badge/JSON_Web_Token-000000?style=for-the-badge&logo=json-web-tokens&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+![Redux](https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=redux&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
-![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
-![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
-![React Google Login](https://img.shields.io/badge/React_Google_Login-4285F4?style=for-the-badge&logo=google&logoColor=white)
+![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=json-web-tokens&logoColor=white)
 ![Material UI](https://img.shields.io/badge/Material_UI-0081CB?style=for-the-badge&logo=material-ui&logoColor=white)
 ![Axios](https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white)
-![Moment.js](https://img.shields.io/badge/Moment.js-8B5CF6?style=for-the-badge&logo=moment.js&logoColor=white)
 
-## Features
+## Key features
 
-- User authentication & authorization using JWT token
-- Real-time state updates made possible using redux.
-- MongoDB integration as database source
-- React google login integration
-- moment.js for posts dates and time formats
-- Pagination support to improve performance
+- User signup / signin with JWT (and Google sign-in integration)
+- Create, read, update and delete posts (CRUD)
+- Search posts by text and tags
+- Pagination for post lists
+- Commenting endpoint and optimistic UI updates
+- Protected API routes for authenticated actions
 
-## Setup Steps
+## Project structure
 
-1. Clone repository
-2. cd into either client or server directory first
-3. `npm install` or `npm install --legacy-peer-deps` to ignore peer dependency flags
-4. configure `.env or .env.local` locally
-5. connect mongoose before running the server
-6. voilà!
+- client/ — React app (Redux, Axios, Material UI)
+- server/ — Express API (routes, controllers, models) and Mongoose for MongoDB
 
-### Setup Environment Variables (.env.loca)
+## Getting started (developer setup)
 
-```
-MONGODB_URL=
-PORT=
-```
+Note: client and server are independent. Run them in separate terminals.
 
-## Status
+1. Clone the repo
 
-All current features funtional, user can create, update, edit and delete post.
+   git clone https://github.com/huduhamed/Articles.git
+   cd Articles
 
-### Todo
+2. Server (API)
 
-- [ ] Implement comments UI under Posts
-- [ ] Testing
-- [ ] Restructure dashboard and postcard
+   cd server
+   npm install
+
+   Create a `.env` file inside the `server/` folder with the following values:
+
+   MONGODB_URL=
+   PORT=
+
+   Start server:
+   npm start
+
+3. Client (UI)
+   cd ../client
+
+   npm install
+   npm start
+
+## Useful tips & troubleshooting
+
+- If you see an error about `MONGODB_URL` being undefined, make sure a `.env` exists in `server/` and includes `MONGODB_URL`.
+- For Atlas access, ensure your IP is whitelisted in the network access settings or use the appropriate connection rules for your environment.
+-
+- Quick API check (after server starts):
+  curl http://localhost:5000/posts
+
+## Screenshot
 
 ![Posts page](client/src/images/readMe.png)
+
+## Next steps
+
+- Add automated tests (Jest) for key API endpoints and component tests for UI.
+- Add CI pipeline and a deploy script (Netlify/Vercel for client, Heroku/Render for server or Docker-based deployment).
